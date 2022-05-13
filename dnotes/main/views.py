@@ -32,13 +32,15 @@ def index(request):
 
 def register(request):
     META = request.META
+    title = "Register"
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')
+        else:
+            return render(request,"register.html",{**globals(),**locals()},status=400)
     else:
-        title = "Register"
         form = UserCreationForm()
         return render(request,"register.html",{**globals(),**locals()})
 
