@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html prefix="og: https://ogp.me/ns#">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{{ title }} | {{ sitename }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}" />
+    <link rel="preconnect" href="https://ajax.googleapis.com/" crossorigin />
+    <link rel="dns-prefetch" href="https://ajax.googleapis.com/" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div id="heading">
+        <div id="currentuser">{% if user.username != "" %}Logged in: {{ user }}<br /><a href="/dashboard/">Dashboard</a> | {% if user.is_staff %}<a href="/admin/">Admin</a> | {% endif %}<a href="{% url 'logout' %}">Logout</a>{% else %}Not logged in<br /><a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>{% endif %}</div>
+        <h1 id="heading-title">{{ title }}</h1>
+    </div>
+    <div id="bodycontent">{% block bodycontent %}{% endblock %}</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+
+{% block bodycontent %}
+    <div id="welcome">{% if errormsg %}{{ errormsg }}{% else %}Hi, {{ user.username }}!{% endif %}</div>
+    <h2>List of notes</h2>
+    <div id="notelist" class="contentgrid">
+        <div class="notelistcontent">
+            <div class="notelistcontenttitle">Note something...</div>
+            <form method="post" action="/post_action/">{% csrf_token %}
+                <input type="hidden" name="type" value="create" />
+                <input type="text" id="title" name="title" required class="form" placeholder="Title"/><br />
+                <textarea id="content" name="content" required class="form" placeholder="Content"></textarea><br />
+                <input type="submit" value="Submit" class="form"/>
+            </form>
+        </div>
+        {% for x in notelist %}
+            <a class="notelistcontent" href="/note/{{ x.tid }}/">
+                <div class="notelistcontenttitle">{{ x.title }}</div>
+                <div class="notelistcontentdetails">
+                    <div>Created on {{ x.created_on }}</div>
+                    <div>Modified on: {{ x.modify_on }}</div>
+                    <div>{{ x.content | length }} charactor{{ x.content | length | pluralize }} long</div>
+                    <div>{% if x.link_share %}Shared via link{% else %}Only for you{% endif %}</div>
+                </div>
+                <p>{{ x.content | truncatechars:50 }}</p>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
