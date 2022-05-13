@@ -20,7 +20,7 @@ def dashboard(request):
     if "errormsg" in request.GET:
         errormsg = request.GET["errormsg"]
     notelist = models.Note.objects.filter(owner=request.user)
-    return render(request, "dashboard.html", globals() | locals())
+    return render(request, "dashboard.html", {**globals(),**locals()})
 
 @login_required(login_url="/login/")
 def index(request):
@@ -34,7 +34,7 @@ def register(request):
             form.save()
             return redirect('login')
     else:
-        return render(request,"register.html",{"sitename":sitename,"title":"Register","form":UserCreationForm})
+        return render(request,"register.html",{**globals(),**locals()})
 
 @login_required(login_url="/login/")
 def post_action(request):
@@ -66,9 +66,9 @@ def note(request, tid: str):
         n = models.Note.objects.get(tid=tid)
         if util.can_user_see_note(request.user,n):
             title = n.title
-            return render(request, "note.html", globals() | locals())
+            return render(request, "note.html", {**globals(),**locals()})
     # Fallback 404
     title = "404"
     message = "Note Not Found"
-    return render(request, "error.html", globals() | locals(), status=404)
+    return render(request, "error.html", {**globals(),**locals()}, status=404)
 
