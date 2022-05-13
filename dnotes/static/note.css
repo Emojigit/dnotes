@@ -16,7 +16,7 @@ form {
     display: none;
 }
 #maincontent {
-    white-space: pre-line;
+    white-space: pre;
 }
 #bodycontent {
     margin-left: 5px;
