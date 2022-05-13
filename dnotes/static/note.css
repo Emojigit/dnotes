@@ -2,7 +2,7 @@
     display: none;
 }
 textarea {
-    color: black;
+    color: var(--details);
     width: 100%;
     height: 400px;
 }
