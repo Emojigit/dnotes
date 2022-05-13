@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from main import views
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +26,6 @@ urlpatterns = [
     path('dashboard/', views.dashboard),
     path('post_action/', views.post_action),
     path('note/<str:tid>/', views.note),
+    path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico'))
     path('', views.index),
 ]
