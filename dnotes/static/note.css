@@ -22,3 +22,7 @@ form {
     margin-left: 5px;
     margin-right: 5px;
 }
+#titledetails {
+    color: var(--details);
+    font-size: 0.7em;
+}

@@ -14,7 +14,7 @@
 <body>
     <div id="heading">
         <div id="currentuser">{% if user.username != "" %}Logged in: {{ user }}<br /><a href="/dashboard/">Dashboard</a> | {% if user.is_staff %}<a href="/admin/">Admin</a> | {% endif %}<a href="{% url 'logout' %}">Logout</a>{% else %}Not logged in<br /><a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>{% endif %}</div>
-        <h1 id="heading-title">{{ title }}</h1>
+        <h1 id="heading-title">{% block title %}{{ title }}{% endblock %}</h1>
     </div>
     <div id="bodycontent">{% block bodycontent %}{% endblock %}</div>
     <div style="clear: both;"></div>

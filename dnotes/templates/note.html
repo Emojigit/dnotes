@@ -6,6 +6,8 @@
     {% if n.owner == user %}<script src="{% static 'note.js' %}" async></script>{% endif %}
 {% endblock %}
 
+{% block title %}{{ n.title }} <span id="titledetails">by {{ n.owner.username }}</span>{% endblock %}
+
 {% block bodycontent %}
     <div id="maincontent">{{ n.content | urlize }}</div>
     {% if n.owner == user %}<form action="/post_action/" method="post" id="editform">{% csrf_token %}
