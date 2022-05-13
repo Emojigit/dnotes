@@ -26,6 +26,6 @@ urlpatterns = [
     path('dashboard/', views.dashboard),
     path('post_action/', views.post_action),
     path('note/<str:tid>/', views.note),
-    path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico'))
+    path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),
     path('', views.index),
 ]
