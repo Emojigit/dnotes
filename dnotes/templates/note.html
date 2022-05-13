@@ -14,7 +14,7 @@
         <input type="checkbox" id="linkshare" name="linkshare" value="yes" {% if n.link_share %}checked{% endif %} /><label for="linkshare"> Allow anyone with the link to view this note</label><br />
         <input type="hidden" id="type" name="type" required value="modify"/>
         <input type="hidden" id="tid" name="tid" required value="{{ n.tid }}"/>
-        <input type="submit" value="Modify" /><button id="delete">Delete</button><button onclick="location.reload()" >Discard</button>
+        <input type="submit" value="Modify" /> <button id="delete">Delete</button> <button onclick="location.reload()" >Discard</button>
     </form>
     <button id="edit">Edit</button>{% endif %}
 {% endblock %}
