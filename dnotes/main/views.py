@@ -34,6 +34,7 @@ def register(request):
             form.save()
             return redirect('login')
     else:
+        form = UserCreationForm()
         return render(request,"register.html",{**globals(),**locals()})
 
 @login_required(login_url="/login/")
