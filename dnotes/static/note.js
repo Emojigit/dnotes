@@ -5,7 +5,7 @@ $(function(){
     $title = $("title");
     $heading_title = $("#heading-title");
 
-    editing = false;
+    let editing = false;
 
     $editbtn.click(function(e){
         e.preventDefault();
@@ -15,6 +15,7 @@ $(function(){
             $(this).hide();
             $title.prepend("*");
             $heading_title.prepend("[EDITING] ");
+            editing = true;
         }
     });
 
