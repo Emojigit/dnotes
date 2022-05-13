@@ -74,6 +74,7 @@ def note(request, tid: str):
     if models.Note.objects.filter(tid=tid).exists():
         n = models.Note.objects.get(tid=tid)
         if util.can_user_see_note(request.user,n):
+            title = n.title
             return render(request, "note.html", {**globals(),**locals()})
     # Fallback 404
     title = "404"
