@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 import json
 
 sitename = settings.site_name
+disclaimer = settings.disclaimer
 
 # Create your views here.
 
