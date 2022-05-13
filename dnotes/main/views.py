@@ -20,6 +20,10 @@ def dashboard(request):
     if "errormsg" in request.GET:
         errormsg = request.GET["errormsg"]
     notelist = models.Note.objects.filter(owner=request.user)
+    try:
+        notelist = notelist.order_by(request.GET["order"] if "order" in request.GET else "-modify_on")
+    except:
+        errormsg = "Invalid order value"
     return render(request, "dashboard.html", {**globals(),**locals()})
 
 @login_required(login_url="/login/")

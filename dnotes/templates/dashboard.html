@@ -4,6 +4,10 @@
 {% block bodycontent %}
     <div id="welcome">{% if errormsg %}{{ errormsg }}{% else %}Hi, {{ user.username }}!{% endif %}</div>
     <h2>List of notes</h2>
+    <div id="orderby">
+         Assending Order: <span class="sep-pipe"><span><a href="/dashboard?order=title">Title</a></span><span><a href="/dashboard?order=created_on">Created On</a></span><span><a href="/dashboard?order=modify_on">Modified On</a></span></span><br />
+         Desending Order: <span class="sep-pipe"><span><a href="/dashboard?order=-title">Title</a></span><span><a href="/dashboard?order=-created_on">Created On</a></span><span><a href="/dashboard?order=-modify_on">Modified On</a></span></span>
+    </div>
     <div id="notelist" class="contentgrid">
         <div class="notelistcontent">
             <div class="notelistcontenttitle">Note something...</div>
