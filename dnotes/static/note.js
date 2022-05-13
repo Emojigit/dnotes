@@ -4,7 +4,8 @@ $(function(){
     $maincontent = $("#maincontent");
     $title = $("title");
     $heading_title = $("#heading-title");
-    $deletebtn = $("#delete")
+    $deletebtn = $("#delete");
+    $type = $("#type");
 
     let editing = false;
 
