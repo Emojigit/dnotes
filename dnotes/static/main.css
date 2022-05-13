@@ -109,3 +109,9 @@ a.notelistcontent {
     display: block;
     text-decoration: none;
 }
+
+input, select, textarea {
+    background-color: var(--bkg);
+    color: var(--text);
+    border: 2px solid var(--text);
+}
