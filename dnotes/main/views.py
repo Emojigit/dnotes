@@ -65,6 +65,7 @@ def post_action(request):
                             n.title = data["title"]
                             n.content = data["content"]
                             n.link_share = True if "linkshare" in data and data["linkshare"] == "yes" else False
+                            n.monospace = True if "monospace" in data and data["monospace"] == "yes" else False
                             n.save()
                             return redirect("/note/" + n.tid + "/")
     return redirect("/dashboard/?errormsg=Some%20Error%20Occurs.")

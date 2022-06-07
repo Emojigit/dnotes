@@ -20,6 +20,7 @@ class Note(models.Model):
     created_on = models.DateTimeField(auto_now_add=True,editable=False)
     modify_on = models.DateTimeField(auto_now=True,editable=False)
     link_share = models.BooleanField(default=False)
+    monospace = models.BooleanField(default=False)
     def __str__(self):
         return self.title + " by " + self.owner.username
 
