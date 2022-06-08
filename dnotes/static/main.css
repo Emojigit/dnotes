@@ -14,6 +14,18 @@
     }
 }
 
+@media print {
+    *[noprint] {
+        display: none;
+    }
+    :root {
+        --bkg: #fff;
+        --text: #000;
+        --a: blue;
+        --details: lightgrey;
+    }
+}
+
 :root {
     --hr: 1px solid var(--text);
 }
@@ -121,8 +133,3 @@ textarea {
     caret-color: var(--text);
 }
 
-@media print {
-    *[noprint] {
-        display: none;
-    }
-}
