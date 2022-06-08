@@ -1,23 +1,25 @@
 {% extends 'main.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block head %}
     <link rel="stylesheet" type="text/css" href="{% static 'note.css' %}" />
     {% if n.owner == user %}<script src="{% static 'note.js' %}" async></script>{% endif %}
 {% endblock %}
 
-{% block title %}{{ n.title }} <span id="titledetails">by {{ n.owner.username }}</span>{% endblock %}
+{% block title %}{{ n.title }}<span id="titledetails">{% blocktranslate with uname=n.owner.username %}by {{ uname }}{% endblocktranslate %}</span>{% endblock %}
 
 {% block bodycontent %}
     <div id="maincontent" style="{% if n.monospace %}font-family: monospace;{% endif %}">{{ n.content | urlize }}</div>
     {% if n.owner == user %}<form action="/post_action/" method="post" id="editform" noprint>{% csrf_token %}
-        <label for="title" id="label-title">Title:</label> <input type="text" id="title" name="title" required id="notetitle" value="{{ n.title }}" /><!-- type => text on edit mode --><br class="hidedefault" />
+        <label for="title" id="label-title">{% blocktranslate %}Title:{% endblocktranslate %}</label> <input type="text" id="title" name="title" required id="notetitle" value="{{ n.title }}" /><!-- type => text on edit mode --><br class="hidedefault" />
         <textarea id="content" name="content" required>{{ n.content }}</textarea><br class="hidedefault" /><br />
-        <input type="checkbox" id="linkshare" name="linkshare" value="yes" {% if n.link_share %}checked{% endif %} /><label for="linkshare"> Allow anyone with the link to view this note</label><br />
-        <input type="checkbox" id="monospace" name="monospace" value="yes" {% if n.monospace %}checked{% endif %} /><label for="monospace"> Use monospace font (default: sans-serif)</label><br />
+        <input type="checkbox" id="linkshare" name="linkshare" value="yes" {% if n.link_share %}checked{% endif %} /><label for="linkshare"> {% blocktranslate %}Allow anyone with the link to view this note{% endblocktranslate %}</label><br />
+        <input type="checkbox" id="monospace" name="monospace" value="yes" {% if n.monospace %}checked{% endif %} /><label for="monospace"> {% blocktranslate %}Use monospace font (default: sans-serif){% endblocktranslate %}</label><br />
         <input type="hidden" id="type" name="type" required value="modify"/>
         <input type="hidden" id="tid" name="tid" required value="{{ n.tid }}"/>
-        <input type="submit" value="Modify" /> <button id="delete">Delete</button> <button onclick="location.reload()" >Discard</button>
+        <input type="submit" value="{% blocktranslate %}Modify{% endblocktranslate %}" /> <button id="delete">{% blocktranslate %}Delete{% endblocktranslate %}</button> <button onclick="location.reload()" >{% blocktranslate %}Discard{% endblocktranslate %}</button>
     </form>
     <button id="edit" noprint>Edit</button>{% endif %}
+    <div style="display: none;" id="i18n-confirmdelete">{% blocktranslate %}Do you really want to delete this note?{% endblocktranslate %}</div>
 {% endblock %}

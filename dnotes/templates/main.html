@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 {% load static %}
-<html prefix="og: https://ogp.me/ns#">
+{% load i18n %}
+<html prefix="og: https://ogp.me/ns#" lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -13,7 +14,7 @@
 </head>
 <body>
     <div id="heading">
-        <div id="currentuser" noprint>{% if user.username != "" %}Logged in: {{ user }}<br /><a href="/dashboard/">Dashboard</a> | {% if user.is_staff %}<a href="/admin/">Admin</a> | {% endif %}<a href="{% url 'logout' %}">Logout</a>{% else %}Not logged in<br /><a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>{% endif %}</div>
+        <div id="currentuser">{% if user.username != "" %}{% blocktranslate with uname=user.username %}Logged in: {{ uname }}{% endblocktranslate %}<br /><a href="/dashboard/">{% blocktranslate %}Dashboard{% endblocktranslate %}</a> | {% if user.is_staff %}<a href="/admin/">{% blocktranslate %}Admin{% endblocktranslate %}</a> | {% endif %}<a href="{% url 'logout' %}">{% blocktranslate %}Logout{% endblocktranslate %}</a>{% else %}{% blocktranslate %}Not logged in{% endblocktranslate %}<br /><a href="{% url 'login' %}">{% blocktranslate %}Login{% endblocktranslate %}</a> | <a href="{% url 'register' %}">{% blocktranslate %}Register{% endblocktranslate %}</a>{% endif %}</div>
         <h1 id="heading-title">{% block title %}{{ title }}{% endblock %}</h1>
     </div>
     <div id="bodycontent">{% block bodycontent %}{% endblock %}</div>

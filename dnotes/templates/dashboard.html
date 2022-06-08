@@ -1,31 +1,45 @@
 {% extends 'main.html' %}
-
+{% load i18n %}
 
 {% block bodycontent %}
-    <div id="welcome">{% if errormsg %}{{ errormsg }}{% else %}Hi, {{ user.username }}!{% endif %}</div>
+    <form action="{% url 'set_language' %}" method="post" style="float: right;">{% csrf_token %}
+        <input name="next" type="hidden" value="/dashboard/">
+        <select name="language">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                    {{ language.name_local }} ({{ language.code }})
+                </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Go">
+    </form>
+    <div id="welcome">{% if errormsg %}{{ errormsg }}{% else %}{% blocktranslate with uname=user.username %}Hi, {{ uname }}!{% endblocktranslate %}{% endif %}</div>
     <h2>List of notes</h2>
     <div id="orderby">
-         Assending Order: <span class="sep-pipe"><span><a href="/dashboard?order=title">Title</a></span><span><a href="/dashboard?order=created_on">Created On</a></span><span><a href="/dashboard?order=modify_on">Modified On</a></span></span><br />
-         Desending Order: <span class="sep-pipe"><span><a href="/dashboard?order=-title">Title</a></span><span><a href="/dashboard?order=-created_on">Created On</a></span><span><a href="/dashboard?order=-modify_on">Modified On</a></span></span>
+         {% blocktranslate %}Assending Order: {% endblocktranslate %}<span class="sep-pipe"><span><a href="/dashboard?order=title">{% blocktranslate %}Title{% endblocktranslate %}</a></span><span><a href="/dashboard?order=created_on">{% blocktranslate %}Created On{% endblocktranslate %}</a></span><span><a href="/dashboard?order=modify_on">{% blocktranslate %}Modified On{% endblocktranslate %}</a></span></span><br />
+         {% blocktranslate %}Desending Order: {% endblocktranslate %}<span class="sep-pipe"><span><a href="/dashboard?order=-title">{% blocktranslate %}Title{% endblocktranslate %}</a></span><span><a href="/dashboard?order=-created_on">{% blocktranslate %}Created On{% endblocktranslate %}</a></span><span><a href="/dashboard?order=-modify_on">{% blocktranslate %}Modified On{% endblocktranslate %}</a></span></span>
     </div>
     <div id="notelist" class="contentgrid">
         <div class="notelistcontent">
-            <div class="notelistcontenttitle">Note something...</div>
+            <div class="notelistcontenttitle">{% blocktranslate %}Note something...{% endblocktranslate %}</div>
             <form method="post" action="/post_action/">{% csrf_token %}
                 <input type="hidden" name="type" value="create" />
                 <input type="text" id="title" name="title" required class="form" placeholder="Title"/><br />
                 <textarea id="content" name="content" required class="form" placeholder="Content"></textarea><br />
-                <input type="submit" value="Submit" class="form"/>
+                <input type="submit" value="{% blocktranslate %}Submit{% endblocktranslate %}" class="form"/>
             </form>
         </div>
         {% for x in notelist %}
             <a class="notelistcontent" href="/note/{{ x.tid }}/">
                 <div class="notelistcontenttitle">{{ x.title }}</div>
                 <div class="notelistcontentdetails">
-                    <div>Created on {{ x.created_on }}</div>
-                    <div>Modified on: {{ x.modify_on }}</div>
-                    <div>{{ x.content | length }} charactor{{ x.content | length | pluralize }} long</div>
-                    <div>{% if x.link_share %}Shared via link{% else %}Only for you{% endif %}</div>
+                    <div>{% blocktranslate with created_on=x.created_on %}Created on: {{ created_on }}{% endblocktranslate %}</div>
+                    <div>{% blocktranslate with modify_on=x.modify_on %}Modified on: {{ modify_on }}{% endblocktranslate %}</div>
+                    <div>{% blocktranslate with length=x.content|length %}{{ length }} charactor(s) long{% endblocktranslate %}</div>
+                    <div>{% if x.link_share %}{% blocktranslate %}Shared via link{% endblocktranslate %}{% else %}{% blocktranslate %}Only for you{% endblocktranslate %}{% endif %}</div>
                 </div>
                 <p>{{ x.content | truncatechars:50 }}</p>
             </a>

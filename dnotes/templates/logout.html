@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
-
+{% load i18n %}
 
 {% block bodycontent %}
-    <p>Logged out.</p>
+    <p>{% blocktranslate %}Logged out.{% endblocktranslate %}</p>
     <p><a href="{% url 'login' %}">Login again</a>, or <a href="/">back to main page</a>.</p>
 {% endblock %}

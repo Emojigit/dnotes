@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
-
+{% load i18n %}
 
 {% block bodycontent %}
     <p id="message">{{ message }}</p>
-    <p class="sep-pipe"><span><a href="javascript:history.back();">Back</a></span><span><a href="/dashboard/">Main Page</a></span></p>
+    <p class="sep-pipe"><span><a href="javascript:history.back();">{% blocktranslate %}Back{% endblocktranslate %}</a></span><span><a href="/dashboard/">{% blocktranslate %}Main Page{% endblocktranslate %}</a></span></p>
 {% endblock %}

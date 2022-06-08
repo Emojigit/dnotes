@@ -5,6 +5,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 import json
+from django.utils.translation import gettext as _
 
 sitename = settings.site_name
 disclaimer = settings.disclaimer
@@ -17,14 +18,14 @@ logout = LogoutView.as_view(template_name="logout.html",extra_context={"sitename
 
 @login_required(login_url="/login/")
 def dashboard(request):
-    title = "Dashboard"
+    title = _("Dashboard")
     if "errormsg" in request.GET:
-        errormsg = request.GET["errormsg"]
+        errormsg = _(request.GET["errormsg"])
     notelist = models.Note.objects.filter(owner=request.user)
     try:
         notelist = notelist.order_by(request.GET["order"] if "order" in request.GET else "-modify_on")
     except:
-        errormsg = "Invalid order value"
+        errormsg = _("Invalid order value")
     return render(request, "dashboard.html", {**globals(),**locals()})
 
 @login_required(login_url="/login/")
@@ -33,7 +34,7 @@ def index(request):
 
 def register(request):
     META = request.META
-    title = "Register"
+    title = _("Register")
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -79,6 +80,6 @@ def note(request, tid: str):
             return render(request, "note.html", {**globals(),**locals()})
     # Fallback 404
     title = "404"
-    message = "Note Not Found"
+    message = _("Note Not Found")
     return render(request, "error.html", {**globals(),**locals()}, status=404)
 

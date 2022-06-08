@@ -21,9 +21,10 @@ $(function(){
         }
     });
 
+    deletealert = $("#i18n-confirmdelete").text()
     $deletebtn.click(function(e){
         e.preventDefault();
-        if (confirm("Do you really want to delete this note?")) {
+        if (confirm(deletealert)) {
             $type.attr("value","delete");
             $form.submit();
         }

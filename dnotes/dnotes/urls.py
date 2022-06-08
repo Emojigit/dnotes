@@ -26,6 +26,7 @@ urlpatterns = [
     path('dashboard/', views.dashboard),
     path('post_action/', views.post_action),
     path('note/<str:tid>/', views.note),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),
     path('', views.index),
 ]
