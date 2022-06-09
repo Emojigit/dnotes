@@ -7,7 +7,7 @@
     {% if n.owner == user %}<script src="{% static 'note.js' %}" async></script>{% endif %}
 {% endblock %}
 
-{% block title %}{{ n.title }}<span id="titledetails">{% blocktranslate with uname=n.owner.username %}by {{ uname }}{% endblocktranslate %}</span>{% endblock %}
+{% block title %}{{ n.title }} <span id="titledetails">{% blocktranslate with uname=n.owner.username %}by {{ uname }}{% endblocktranslate %}</span>{% endblock %}
 
 {% block bodycontent %}
     <div id="maincontent" style="{% if n.monospace %}font-family: monospace;{% endif %}">{{ n.content | urlize }}</div>
@@ -20,6 +20,6 @@
         <input type="hidden" id="tid" name="tid" required value="{{ n.tid }}"/>
         <input type="submit" value="{% blocktranslate %}Modify{% endblocktranslate %}" /> <button id="delete">{% blocktranslate %}Delete{% endblocktranslate %}</button> <button onclick="location.reload()" >{% blocktranslate %}Discard{% endblocktranslate %}</button>
     </form>
-    <button id="edit" noprint>Edit</button>{% endif %}
+    <button id="edit" noprint>{% blocktranslate %}Edit{% endblocktranslate %}</button>{% endif %}
     <div style="display: none;" id="i18n-confirmdelete">{% blocktranslate %}Do you really want to delete this note?{% endblocktranslate %}</div>
 {% endblock %}

@@ -121,7 +121,11 @@ LANGUAGE_CODE = 'en-us'
 
 LANGUAGES = [
     ('en', 'English'),
-    ('zh-hant', 'Chinese (Traditional)'),
+    ('zh-hant', 'Chinese (Traditional)'), # Thanks Evan Luo
+]
+
+LOCALE_PATHS = [
+    join(BASE_DIR,'locale')
 ]
 
 TIME_ZONE = 'UTC'

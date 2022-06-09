@@ -4,8 +4,9 @@
 {% block bodycontent %}
     <form action="{% url 'set_language' %}" method="post" style="float: right;">{% csrf_token %}
         <input name="next" type="hidden" value="/dashboard/">
+        {% get_current_language as LANGUAGE_CODE %}
+        <label for="languages">{% if LANGUAGE_CODE != "en" %}<span lang="en">(Language)</span> {% endif %}{% blocktranslate %}Language: {% endblocktranslate %}</label>
         <select name="language">
-            {% get_current_language as LANGUAGE_CODE %}
             {% get_available_languages as LANGUAGES %}
             {% get_language_info_list for LANGUAGES as languages %}
             {% for language in languages %}
@@ -14,10 +15,10 @@
                 </option>
             {% endfor %}
         </select>
-        <input type="submit" value="Go">
+        <input type="submit" value="{% blocktranslate %}Change{% endblocktranslate %}">
     </form>
     <div id="welcome">{% if errormsg %}{{ errormsg }}{% else %}{% blocktranslate with uname=user.username %}Hi, {{ uname }}!{% endblocktranslate %}{% endif %}</div>
-    <h2>List of notes</h2>
+    <h2>{% blocktranslate %}List of notes{% endblocktranslate %}</h2>
     <div id="orderby">
          {% blocktranslate %}Assending Order: {% endblocktranslate %}<span class="sep-pipe"><span><a href="/dashboard?order=title">{% blocktranslate %}Title{% endblocktranslate %}</a></span><span><a href="/dashboard?order=created_on">{% blocktranslate %}Created On{% endblocktranslate %}</a></span><span><a href="/dashboard?order=modify_on">{% blocktranslate %}Modified On{% endblocktranslate %}</a></span></span><br />
          {% blocktranslate %}Desending Order: {% endblocktranslate %}<span class="sep-pipe"><span><a href="/dashboard?order=-title">{% blocktranslate %}Title{% endblocktranslate %}</a></span><span><a href="/dashboard?order=-created_on">{% blocktranslate %}Created On{% endblocktranslate %}</a></span><span><a href="/dashboard?order=-modify_on">{% blocktranslate %}Modified On{% endblocktranslate %}</a></span></span>
