@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block bodycontent %}
-    <form action="{% url 'set_language' %}" method="post" style="float: right;">{% csrf_token %}
+    <form action="{% url 'set_language' %}" method="post" id="langselect">{% csrf_token %}
         <input name="next" type="hidden" value="/dashboard/">
         {% get_current_language as LANGUAGE_CODE %}
         <label for="languages">{% if LANGUAGE_CODE != "en" %}<span lang="en">(Language)</span> {% endif %}{% blocktranslate %}Language: {% endblocktranslate %}</label>

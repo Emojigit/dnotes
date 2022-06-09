@@ -26,6 +26,32 @@
     }
 }
 
+#welcome {
+    /* W3 CSS Default settings of h3 */
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+#langselect {
+    margin-top: unset;
+    float: right;
+}
+
+@media (max-width: 470px) {
+    #langselect {
+        float: unset;
+        margin-top: 1em;
+    }
+    #welcome {
+        margin-top: unset;
+    }
+}
+
 :root {
     --hr: 1px solid var(--text);
 }
@@ -61,17 +87,6 @@ body {
 .sep-pipe > span:not(:last-child)::after {
     content: "\00a0|\00a0";
     display: inline-block;
-}
-
-#welcome {
-    /* W3 CSS Default settings of h3 */
-    display: block;
-    font-size: 1.17em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
 }
 
 .contentgrid {
