@@ -121,7 +121,8 @@ LANGUAGE_CODE = 'en-us'
 
 LANGUAGES = [
     ('en', 'English'),
-    ('zh-hant', 'Chinese (Traditional)'), # Thanks Evan Luo
+    ('zh-hant', 'Chinese (Traditional)'),
+    ('zh-hans', 'Chinese (Simplified)'), # Thanks Evan Luo
 ]
 
 LOCALE_PATHS = [
