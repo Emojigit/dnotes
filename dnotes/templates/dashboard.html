@@ -20,8 +20,8 @@
     <div id="welcome">{% if errormsg %}{{ errormsg }}{% else %}{% blocktranslate with uname=user.username %}Hi, {{ uname }}!{% endblocktranslate %}{% endif %}</div>
     <h2>{% blocktranslate %}List of notes{% endblocktranslate %}</h2>
     <div id="orderby">
-         {% blocktranslate %}Assending Order: {% endblocktranslate %}<span class="sep-pipe"><span><a href="/dashboard?order=title">{% blocktranslate %}Title{% endblocktranslate %}</a></span><span><a href="/dashboard?order=created_on">{% blocktranslate %}Created On{% endblocktranslate %}</a></span><span><a href="/dashboard?order=modify_on">{% blocktranslate %}Modified On{% endblocktranslate %}</a></span></span><br />
-         {% blocktranslate %}Desending Order: {% endblocktranslate %}<span class="sep-pipe"><span><a href="/dashboard?order=-title">{% blocktranslate %}Title{% endblocktranslate %}</a></span><span><a href="/dashboard?order=-created_on">{% blocktranslate %}Created On{% endblocktranslate %}</a></span><span><a href="/dashboard?order=-modify_on">{% blocktranslate %}Modified On{% endblocktranslate %}</a></span></span>
+         {% blocktranslate %}Ascending Order: {% endblocktranslate %}<span class="sep-pipe"><span><a href="/dashboard?order=title">{% blocktranslate %}Title{% endblocktranslate %}</a></span><span><a href="/dashboard?order=created_on">{% blocktranslate %}Created On{% endblocktranslate %}</a></span><span><a href="/dashboard?order=modify_on">{% blocktranslate %}Modified On{% endblocktranslate %}</a></span></span><br />
+         {% blocktranslate %}Descending Order: {% endblocktranslate %}<span class="sep-pipe"><span><a href="/dashboard?order=-title">{% blocktranslate %}Title{% endblocktranslate %}</a></span><span><a href="/dashboard?order=-created_on">{% blocktranslate %}Created On{% endblocktranslate %}</a></span><span><a href="/dashboard?order=-modify_on">{% blocktranslate %}Modified On{% endblocktranslate %}</a></span></span>
     </div>
     <div id="notelist" class="contentgrid">
         <div class="notelistcontent">

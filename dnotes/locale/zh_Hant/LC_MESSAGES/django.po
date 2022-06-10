@@ -51,7 +51,7 @@ msgid "List of notes"
 msgstr "筆記列表"
 
 #: templates/dashboard.html:23
-msgid "Assending Order: "
+msgid "Ascending Order: "
 msgstr "升序："
 
 #: templates/dashboard.html:23 templates/dashboard.html:24
@@ -67,7 +67,7 @@ msgid "Modified On"
 msgstr "修改時間"
 
 #: templates/dashboard.html:24
-msgid "Desending Order: "
+msgid "Descending Order: "
 msgstr "降序："
 
 #: templates/dashboard.html:28
