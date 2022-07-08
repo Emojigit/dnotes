@@ -19,18 +19,18 @@
     </form>
     <div id="welcome">{% if errormsg %}{{ errormsg }}{% else %}{% blocktranslate with uname=user.username %}Hi, {{ uname }}!{% endblocktranslate %}{% endif %}</div>
     <h2>{% blocktranslate %}List of notes{% endblocktranslate %}</h2>
-    <div id="orderby">
+    <div id="orderby" noprint>
          {% blocktranslate %}Ascending Order: {% endblocktranslate %}<span class="sep-pipe"><span><a href="/dashboard?order=title">{% blocktranslate %}Title{% endblocktranslate %}</a></span><span><a href="/dashboard?order=created_on">{% blocktranslate %}Created On{% endblocktranslate %}</a></span><span><a href="/dashboard?order=modify_on">{% blocktranslate %}Modified On{% endblocktranslate %}</a></span></span><br />
          {% blocktranslate %}Descending Order: {% endblocktranslate %}<span class="sep-pipe"><span><a href="/dashboard?order=-title">{% blocktranslate %}Title{% endblocktranslate %}</a></span><span><a href="/dashboard?order=-created_on">{% blocktranslate %}Created On{% endblocktranslate %}</a></span><span><a href="/dashboard?order=-modify_on">{% blocktranslate %}Modified On{% endblocktranslate %}</a></span></span>
     </div>
     <div id="notelist" class="contentgrid">
-        <div class="notelistcontent">
+        <div class="notelistcontent" noprint>
             <div class="notelistcontenttitle">{% blocktranslate %}Note something...{% endblocktranslate %}</div>
             <form method="post" action="/post_action/">{% csrf_token %}
                 <input type="hidden" name="type" value="create" />
                 <input type="text" id="title" name="title" required class="form" placeholder="Title"/><br />
                 <textarea id="content" name="content" required class="form" placeholder="Content"></textarea><br />
-                <input type="submit" value="{% blocktranslate %}Submit{% endblocktranslate %}" class="form"/>
+                <input type="submit" value="{% blocktranslate %}Submit{% endblocktranslate %}" class="form" style="width: 50%"/><button onclick="window.location.pathname='create'" style="width: 50%">{% blocktranslate %}Popup{% endblocktranslate %}</button>
             </form>
         </div>
         {% for x in notelist %}

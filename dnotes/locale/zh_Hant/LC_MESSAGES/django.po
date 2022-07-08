@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-09 08:20+0800\n"
-"PO-Revision-Date: 2022-06-09 08:20+0800\n"
+"POT-Creation-Date: 2022-07-08 23:35+0000\n"
+"PO-Revision-Date: 2022-07-09 07:35+0800\n"
 "Last-Translator: Emoji <contact-forward@thost3.de>\n"
 "Language-Team: Chinese <kde-i18n-doc@kde.org>\n"
 "Language: zh_Hant\n"
@@ -29,9 +29,29 @@ msgstr "無效排序參數"
 msgid "Register"
 msgstr "註冊"
 
-#: main/views.py:83
+#: main/views.py:87
 msgid "Note Not Found"
 msgstr "找不到筆記"
+
+#: main/views.py:92 templates/create.html:9
+msgid "Creating Notes..."
+msgstr "正在建立筆記……"
+
+#: templates/create.html:13 templates/note.html:20
+msgid "Title:"
+msgstr "標題："
+
+#: templates/create.html:15 templates/note.html:22
+msgid "Allow anyone with the link to view this note"
+msgstr "允許所有持有連結的人士查看此筆記"
+
+#: templates/create.html:16 templates/note.html:23
+msgid "Use monospace font (default: sans-serif)"
+msgstr "使用等寬字元（預設：無襯線體）"
+
+#: templates/create.html:18 templates/note.html:26
+msgid "Modify"
+msgstr "修改"
 
 #: templates/dashboard.html:8
 msgid "Language: "
@@ -77,6 +97,10 @@ msgstr "記下所思所想……"
 #: templates/dashboard.html:33
 msgid "Submit"
 msgstr "提交"
+
+#: templates/dashboard.html:33
+msgid "Popup"
+msgstr "彈出"
 
 #: templates/dashboard.html:40
 #, python-format
@@ -134,39 +158,23 @@ msgstr "未登入"
 msgid "Login"
 msgstr "登入"
 
-#: templates/note.html:10
+#: templates/note.html:15
 #, python-format
 msgid "by %(uname)s"
 msgstr "作者：%(uname)s"
 
-#: templates/note.html:15
-msgid "Title:"
-msgstr "標題："
-
-#: templates/note.html:17
-msgid "Allow anyone with the link to view this note"
-msgstr "允許所有持有連結的人士查看此筆記"
-
-#: templates/note.html:18
-msgid "Use monospace font (default: sans-serif)"
-msgstr "使用等寬字元（預設：無襯線體）"
-
-#: templates/note.html:21
-msgid "Modify"
-msgstr "修改"
-
-#: templates/note.html:21
+#: templates/note.html:26
 msgid "Delete"
 msgstr "刪除"
 
-#: templates/note.html:21
+#: templates/note.html:26
 msgid "Discard"
 msgstr "放棄"
 
-#: templates/note.html:23
+#: templates/note.html:28
 msgid "Edit"
 msgstr "修改"
 
-#: templates/note.html:24
+#: templates/note.html:29
 msgid "Do you really want to delete this note?"
 msgstr "確定刪除此筆記？"

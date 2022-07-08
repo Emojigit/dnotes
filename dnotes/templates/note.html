@@ -5,6 +5,11 @@
 {% block head %}
     <link rel="stylesheet" type="text/css" href="{% static 'note.css' %}" />
     {% if n.owner == user %}<script src="{% static 'note.js' %}" async></script>{% endif %}
+    <meta property="og:title" content="{{ n.title }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content="{{ n.created_on }}" />
+    <meta property="og:article:modified_time " content="{{ n.modify_on }}" />
+    <meta property="og:article:author" content="{{ n.owner.username }}" />
 {% endblock %}
 
 {% block title %}{{ n.title }} <span id="titledetails">{% blocktranslate with uname=n.owner.username %}by {{ uname }}{% endblocktranslate %}</span>{% endblock %}

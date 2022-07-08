@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'note.css' %}" />
+{% endblock %}
+
+{% block title %}{% blocktranslate %}Creating Notes...{% endblocktranslate %}{% endblock %}
+
+{% block bodycontent %}
+    <form action="/post_action/" method="post" style="display: block" noprint>{% csrf_token %}
+        <label for="title" id="label-title">{% blocktranslate %}Title:{% endblocktranslate %}</label> <input type="text" id="title" name="title" required id="notetitle" value="" /><br />
+        <textarea id="content" name="content" required></textarea><br />
+        <input type="checkbox" id="linkshare" name="linkshare" value="yes" /> <label for="linkshare">{% blocktranslate %}Allow anyone with the link to view this note{% endblocktranslate %}</label><br />
+        <input type="checkbox" id="monospace" name="monospace" value="yes" /> <label for="monospace">{% blocktranslate %}Use monospace font (default: sans-serif){% endblocktranslate %}</label><br />
+        <input type="hidden" id="type" name="type" required value="create"/>
+        <input type="submit" value="{% blocktranslate %}Modify{% endblocktranslate %}" />
+    </form>
+{% endblock %}

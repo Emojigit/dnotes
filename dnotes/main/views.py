@@ -52,7 +52,11 @@ def post_action(request):
         data = request.POST
         if "type" in data:
             if data["type"] == "create":
-                n = models.Note.objects.create(title=data["title"],owner=request.user,content=data["content"])
+                n = models.Note.objects.create(owner=request.user)
+                n.title = data["title"]
+                n.content = data["content"]
+                n.link_share = True if "linkshare" in data and data["linkshare"] == "yes" else False
+                n.monospace = True if "monospace" in data and data["monospace"] == "yes" else False
                 n.save()
                 return redirect("/note/" + n.tid + "/")
             else:
@@ -82,4 +86,10 @@ def note(request, tid: str):
     title = "404"
     message = _("Note Not Found")
     return render(request, "error.html", {**globals(),**locals()}, status=404)
+
+@login_required(login_url="/login/")
+def create(request):
+    title = _("Creating Notes...")
+    return render(request, "create.html", {**globals(),**locals()})
+
 
